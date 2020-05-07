@@ -1,0 +1,15 @@
+.game-board {
+  border: 1px solid black;
+}
+
+.status-img-sea {
+  border: 1px dashed black;
+  background-image: url("../../assets/sea-water.jpg");
+}
+
+mat-grid-list {
+  height: 34em;
+}
+mat-grid-tile {
+  background-color: lightblue;
+}

@@ -1,0 +1,11 @@
+<div>
+  {{failedShots}}
+</div>
+<div style="width: 500px;">
+
+<mat-grid-list [cols]="gameBoard.getLength()" rowHeight="fit" gutterSize="3px">
+  <mat-grid-tile *ngFor="let field of getFieldsAsFlattenArray(); index as i" (click)="shoot(field)">
+    <img class="align-middle" [src]="getFieldImage(field)">
+  </mat-grid-tile>
+</mat-grid-list>
+</div>

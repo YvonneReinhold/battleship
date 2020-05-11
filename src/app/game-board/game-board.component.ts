@@ -10,6 +10,9 @@ import { Submarine } from '../models/ships/Submarine';
 import { PatrolBoat } from '../models/ships/PatrolBoat';
 import { StatusImage } from '../models/StatusImage';
 
+const HEADER_HORIZONTAL = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N'];
+const HEADER_VERTICAL = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14'];
+
 @Component({
   selector: 'app-game-board',
   templateUrl: './game-board.component.html',
@@ -17,7 +20,7 @@ import { StatusImage } from '../models/StatusImage';
 })
 export class GameBoardComponent implements OnInit {
 
-  gameBoard: Board = new Board(8, 10);
+  gameBoard: Board = new Board(10, 10);
   failedShots = 0;
 
   // TODO: Randomize ship positions
@@ -68,6 +71,10 @@ export class GameBoardComponent implements OnInit {
 
   getFieldsAsFlattenArray() {
     return [].concat.apply([], this.gameBoard.fields);
+  }
+
+  getHorizontalHeader() {
+    return HEADER_HORIZONTAL.slice(0, this.gameBoard.getLength());
   }
 
   setShips() {

@@ -1,1 +1,19 @@
-<p>score-card works!</p>
+<div>
+<mat-card class="score-card">
+  <mat-card-header>
+    <div mat-card-avatar class="avatar-image"></div>
+    <mat-card-title>Battleship</mat-card-title>
+    <mat-card-subtitle>Find all hidden ships. But be careful, after 10 missed shots, the game is lost.</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="../../assets/score-card-overview.png">
+  <mat-card-content>
+    <p>
+
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button (click)="startGame()">Start</button>
+    <button mat-stroked-button (click)="resetGame()">Reset</button>
+  </mat-card-actions>
+</mat-card>
+</div>

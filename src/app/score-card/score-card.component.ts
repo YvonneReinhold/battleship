@@ -1,14 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
-/**
- *  No. Class of ship   Size
- *   1 	Carrier 		    5
- *   2 	Battleship 		  4
- *   3 	Destroyer 		  3
- *   4 	Submarine 	  	3
- *   5	Patrol Boat 	  2
- */
-
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-score-card',
@@ -18,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class ScoreCardComponent implements OnInit {
 
 
+  @Output() startGameEvent = new EventEmitter();
+  @Output() resetGameEvent = new EventEmitter();
+
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  startGame() {
+    this.startGameEvent.emit();
+  }
+
+  resetGame() {
+    this.resetGameEvent.emit();
+  }
 }

@@ -1,5 +1,7 @@
-  <app-header></app-header>
-  <app-game-board></app-game-board>
-  <app-score-card></app-score-card>
+  <!--app-header></!--app-header-->
+  <mat-grid-list cols="3" rowHeight="600px">
+    <mat-grid-tile><app-score-card ></app-score-card></mat-grid-tile>
+    <mat-grid-tile cols="2"><app-game-board></app-game-board></mat-grid-tile>
+  </mat-grid-list>
 
   <router-outlet></router-outlet>

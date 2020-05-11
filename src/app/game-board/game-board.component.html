@@ -1,13 +1,13 @@
-<h3>Your failed shot count <span class="badge badge-pill badge-primary">{{failedShots}}</span></h3>
-<p><span [matBadge]="failedShots" matBadgeOverlap="false" matBadgeSize="small">Your shot failed count</span></p>
+<h3>Your failed shot count <span class="badge badge-pill badge-primary">{{getFailedShots()}}</span></h3>
+<p><span [matBadge]="getFailedShots()" matBadgeOverlap="false" matBadgeSize="small">Your shot failed count</span></p>
 <div style="width: 500px;">
 
-<mat-grid-list [cols]="gameBoard.getLength()+1" rowHeight="fit" gutterSize="3px">
+<mat-grid-list [cols]="getGameBoardWidth()+1" rowHeight="fit" gutterSize="3px">
   <mat-grid-tile class="tile-header"></mat-grid-tile>
   <mat-grid-tile class="tile-header" *ngFor="let hField of getHorizontalHeader()">
     <span>{{hField}}</span>
   </mat-grid-tile>
-  <ng-container *ngFor="let gameBoardRow of gameBoard.fields; index as rowIdx">
+  <ng-container *ngFor="let gameBoardRow of getFields(); index as rowIdx">
     <mat-grid-tile class="tile-header">{{rowIdx+1}}</mat-grid-tile>
     <mat-grid-tile *ngFor="let gameBoardField of gameBoardRow" (click)="shoot(gameBoardField)">
       <img *ngIf="gameBoardField.isShot" class="align-middle" [src]="gameBoardField.statusImage">

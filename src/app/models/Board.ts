@@ -4,11 +4,11 @@ import { Ship, Direction } from './ships/Ship';
 export class Board {
   fields: Field[][];
 
-  constructor(length: number, height: number) {
+  constructor(width: number, height: number) {
     this.fields = [];
     for (let row = 0; row < height; row++) {
       this.fields[row] = [];
-      for (let column = 0; column < length; column++) {
+      for (let column = 0; column < width; column++) {
         this.fields[row][column] = new Field(column, row);
       }
     }

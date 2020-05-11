@@ -24,8 +24,8 @@ export class Field {
     this.ship = null;
     this.isShot = false;
     this.isHit = false;
-    this.statusImage = StatusImage.SEA;
-    this.statusMessage = StatusMessage.SEA;
+    this.statusImage = null;
+    this.statusMessage = null;
   }
 
   setShip(ship: Ship) {
@@ -40,8 +40,8 @@ export class Field {
       this.statusImage = StatusImage.SHIP;
       this.statusMessage = StatusMessage.SHIP;
     } else {
-      this.statusImage = StatusImage.SEA;
-      this.statusMessage = StatusMessage.SEA;
+      this.statusImage = null;
+      this.statusMessage = null;
     }
   }
 }

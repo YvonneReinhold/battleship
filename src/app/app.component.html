@@ -1,7 +1,7 @@
   <!--app-header></!--app-header-->
   <mat-grid-list cols="3" rowHeight="600px">
-    <mat-grid-tile><app-score-card ></app-score-card></mat-grid-tile>
-    <mat-grid-tile cols="2"><app-game-board></app-game-board></mat-grid-tile>
+    <mat-grid-tile><app-score-card (startGameEvent)="startButtonClicked()" (resetGameEvent)="gameBoard.initGameBoard()"></app-score-card></mat-grid-tile>
+    <mat-grid-tile cols="2"><app-game-board #gameBoard [startGame]="isStartButtonClicked()" [resetGame]="isResetButtonClicked()"></app-game-board></mat-grid-tile>
   </mat-grid-list>
 
   <router-outlet></router-outlet>

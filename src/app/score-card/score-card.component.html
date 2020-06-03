@@ -10,9 +10,13 @@
     <div *ngIf="isGameRunning">
       Shots left: {{availableShots}}
     </div>
+    <div *ngIf="!isGameRunning">
+      Press start button to begin!
+    </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-stroked-button (click)="startOrResetGame()">{{buttonText}}</button>
+    <button *ngIf="!isGameRunning" mat-stroked-button (click)="startNewGame()">Start</button>
+    <button *ngIf="isGameRunning" mat-stroked-button (click)="resetGame()">Reset</button>
   </mat-card-actions>
 </mat-card>
 </div>

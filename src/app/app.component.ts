@@ -30,9 +30,15 @@ export class AppComponent implements OnInit {
   startNewGame() {
     this.isGameBoardShown = true;
 
-    if (this.board) {
+    // first call of our game board component
+    // the start button was pressed
+    this.initializeNewBoard();
+  }
 
-      const observer = {
+  resetGame() {
+    this.isGameBoardShown = true;
+
+    const observer = {
         next: (result: boolean) => {
           console.log('app.startNewGame() -> afterClosed: ', result);
           if (result) {
@@ -40,19 +46,14 @@ export class AppComponent implements OnInit {
           }
         },
         error: (value) => {
-          console.error('Oooops.');
+          console.error('Oooops. ', value);
         },
         complete: () => {
           console.log('Close dialog finished.');
         }
       };
 
-      this.openResetDialog().afterClosed().subscribe(observer);
-    } else {
-      // first call of our game board component
-      // the start button was pressed
-      this.initializeNewBoard();
-    }
+    this.openResetDialog().afterClosed().subscribe(observer);
   }
 
   private openResetDialog(): MatDialogRef<ResetGameBoardDialogComponent>  {

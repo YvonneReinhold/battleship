@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-score-card',
@@ -7,21 +7,27 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ScoreCardComponent implements OnInit {
 
-  @Output() startOrResetGameEvent = new EventEmitter();
+  @Output() startNewGameEvent = new EventEmitter();
+  @Output() resetGameEvent = new EventEmitter();
 
-  buttonText: string;
+  @Input() missedShots: number;
+
   isGameRunning: boolean;
   availableShots: number;
 
   ngOnInit() {
-    this.buttonText = 'Start';
     this.isGameRunning = false;
+    // TODO: OPTIONS: Make this value editable in a settings dialog.
     this.availableShots = 30;
   }
 
-  startOrResetGame() {
-    this.buttonText = 'Reset';
+  startNewGame() {
     this.isGameRunning = true;
-    this.startOrResetGameEvent.emit();
+    this.startNewGameEvent.emit();
+  }
+
+  resetGame() {
+    this.isGameRunning = true;
+    this.resetGameEvent.emit();
   }
 }

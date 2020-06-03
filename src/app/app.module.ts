@@ -8,13 +8,15 @@ import { GameBoardComponent } from './game-board/game-board.component';
 import { ScoreCardComponent } from './score-card/score-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { ResetGameBoardDialogComponent } from './reset-game-board-dialog/reset-game-board-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     GameBoardComponent,
-    ScoreCardComponent
+    ScoreCardComponent,
+    ResetGameBoardDialogComponent
   ],
   imports: [
     BrowserModule,

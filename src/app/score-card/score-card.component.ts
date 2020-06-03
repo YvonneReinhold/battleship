@@ -7,21 +7,21 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ScoreCardComponent implements OnInit {
 
+  @Output() startOrResetGameEvent = new EventEmitter();
 
-  @Output() startGameEvent = new EventEmitter();
-  @Output() resetGameEvent = new EventEmitter();
-
-
-  constructor() { }
+  buttonText: string;
+  isGameRunning: boolean;
+  availableShots: number;
 
   ngOnInit() {
+    this.buttonText = 'Start';
+    this.isGameRunning = false;
+    this.availableShots = 30;
   }
 
-  startGame() {
-    this.startGameEvent.emit();
-  }
-
-  resetGame() {
-    this.resetGameEvent.emit();
+  startOrResetGame() {
+    this.buttonText = 'Reset';
+    this.isGameRunning = true;
+    this.startOrResetGameEvent.emit();
   }
 }

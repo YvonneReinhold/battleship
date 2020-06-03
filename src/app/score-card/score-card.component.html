@@ -3,17 +3,16 @@
   <mat-card-header>
     <div mat-card-avatar class="avatar-image"></div>
     <mat-card-title>Battleship</mat-card-title>
-    <mat-card-subtitle>Find all hidden ships. But be careful, after 10 missed shots, the game is lost.</mat-card-subtitle>
+    <mat-card-subtitle>Find all hidden ships. But be careful, you have to find them all with less than {{availableShots}} missed shots or the game is lost.</mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image src="../../assets/score-card-overview.png">
   <mat-card-content>
-    <p>
-
-    </p>
+    <div *ngIf="isGameRunning">
+      Shots left: {{availableShots}}
+    </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-stroked-button (click)="startGame()">Start</button>
-    <button mat-stroked-button (click)="resetGame()">Reset</button>
+    <button mat-stroked-button (click)="startOrResetGame()">{{buttonText}}</button>
   </mat-card-actions>
 </mat-card>
 </div>

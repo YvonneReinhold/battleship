@@ -1,6 +1,6 @@
 UNDER CONSTRUCTION!!!
 
-# Battleship
+# Battleship Game
 
 This project was generated with Angular CLI version 8.3.17.
 and uses material design for layout.

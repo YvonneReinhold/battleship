@@ -19,15 +19,22 @@ export class ScoreCardComponent implements OnInit {
     this.isGameRunning = false;
     // TODO: OPTIONS: Make this value editable in a settings dialog.
     this.availableShots = 30;
+    console.log('Missed shots: ', this.missedShots);
   }
 
   startNewGame() {
     this.isGameRunning = true;
     this.startNewGameEvent.emit();
+    console.log('Missed shots: ', this.missedShots);
   }
 
   resetGame() {
     this.isGameRunning = true;
     this.resetGameEvent.emit();
+    console.log('Missed shots: ', this.missedShots);
+  }
+
+  getAvailableShots(): number {
+    return this.availableShots - this.missedShots;
   }
 }

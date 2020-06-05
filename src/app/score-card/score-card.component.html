@@ -8,7 +8,7 @@
   <img mat-card-image src="../../assets/score-card-overview.png">
   <mat-card-content>
     <div *ngIf="isGameRunning">
-      Shots left: {{availableShots}}
+      Shots left: {{getAvailableShots()}}
     </div>
     <div *ngIf="!isGameRunning">
       Press start button to begin!

@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
   }
 
   resetGame() {
+    console.log('Missed shots: ', this.board.getFailedShots());
     this.isGameBoardShown = true;
 
     const observer = {
@@ -54,6 +55,13 @@ export class AppComponent implements OnInit {
       };
 
     this.openResetDialog().afterClosed().subscribe(observer);
+  }
+
+  getMissedShots(): number {
+    if (this.board) {
+      return this.board.getFailedShots();
+    }
+    return 0;
   }
 
   private openResetDialog(): MatDialogRef<ResetGameBoardDialogComponent>  {

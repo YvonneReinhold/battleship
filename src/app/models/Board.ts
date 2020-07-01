@@ -3,10 +3,12 @@ import { Ship, Direction } from './ships/Ship';
 
 export class Board {
   private fields: Field[][];
+  private availableShots: number;
   private failedShots: number;
 
-  constructor(width: number, height: number) {
+  constructor(width: number, height: number, availableShots: number) {
     this.fields = [];
+    this.availableShots = availableShots;
     for (let row = 0; row < height; row++) {
       this.fields[row] = [];
       for (let column = 0; column < width; column++) {
@@ -27,12 +29,62 @@ export class Board {
     return this.fields.length;
   }
 
+  isGameFailed(): boolean {
+    if (this.getShotsLeft() === 0 && !this.isAllShipsKilled()) {
+      return true;
+    }
+    return false;
+  }
+
+  isGameOver(): boolean {
+    if (this.isAllShipsKilled()) {
+      console.log('Game is over! All ships destroyed! uwu');
+      return true;
+    }
+    if (this.getShotsLeft() === 0) {
+      console.log('Game is over! No shots left! uwu');
+      return true;
+    }
+  }
+
+  /**
+   * Determines whether all ships are killed or not.
+   * @returns true if all ships are killed, false otherwise.
+   */
+  private isAllShipsKilled(): boolean {
+    let isGameOver = true;
+    this.getFieldsAsFlattenArray().forEach((field: Field) => {
+      console.log('Field: ', field);
+      if (field.ship && !field.ship.isSunken()) {
+        isGameOver = false;
+        return;
+      }
+    });
+    return isGameOver;
+  }
+
+  /**
+   * Get the number of shots left.
+   * @returns shots left
+   */
+  getShotsLeft(): number {
+    return this.availableShots - this.failedShots;
+  }
+
   /**
    * Get the number of failed shots for the current game.
    * @returns failed shots.
    */
   getFailedShots(): number {
     return this.failedShots;
+  }
+
+  /**
+   * Get the number of available shots for the current game.
+   * @returns available shots.
+   */
+  getAvailableShots(): number {
+    return this.availableShots;
   }
 
   incrementFailedShots() {
@@ -43,7 +95,11 @@ export class Board {
     return this.fields;
   }
 
-  getFieldsAsFlattenArray() {
+  /**
+   * Gets all fields as an flatten array.
+   * @returns fields as an array
+   */
+  getFieldsAsFlattenArray(): Field[] {
     return [].concat.apply([], this.fields);
   }
 

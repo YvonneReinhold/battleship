@@ -9,6 +9,7 @@ import { ScoreCardComponent } from './score-card/score-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { ResetGameBoardDialogComponent } from './reset-game-board-dialog/reset-game-board-dialog.component';
+import { EndGameDialogComponent } from './end-game-dialog/end-game-dialog.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ResetGameBoardDialogComponent } from './reset-game-board-dialog/reset-g
     HeaderComponent,
     GameBoardComponent,
     ScoreCardComponent,
-    ResetGameBoardDialogComponent
+    ResetGameBoardDialogComponent,
+    EndGameDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -16,8 +16,8 @@ export class GameBoardService {
   constructor() {
   }
 
-  getNewGameBoard(width: number, height: number, ships: Array<Ship>): Board {
-    const board = new Board(width, height);
+  getNewGameBoard(width: number, height: number, ships: Array<Ship>, availableShots: number): Board {
+    const board = new Board(width, height, availableShots);
     ships.forEach( ship => {
       board.addShip(ship);
     });

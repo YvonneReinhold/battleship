@@ -69,6 +69,11 @@ export class GameBoardComponent implements OnInit {
       this.getGameBoard().incrementFailedShots();
       field.statusImage = StatusImage.SEA_SHOT;
     }
+
+    // Check if the game is over
+    if (this.getGameBoard().isGameOver()) {
+      this.snackbar.open('Game is over!' );
+    }
   }
 
   /**

@@ -19,6 +19,7 @@ import { ResetGameBoardDialogComponent } from './reset-game-board-dialog/reset-g
 export class AppComponent implements OnInit {
 
   isGameBoardShown: boolean;
+  availableShots: number;
   board: Board;
 
   constructor(private gameBoardService: GameBoardService, public dialog: MatDialog) {}
@@ -33,6 +34,11 @@ export class AppComponent implements OnInit {
     // first call of our game board component
     // the start button was pressed
     this.initializeNewBoard();
+  }
+
+  endGame() {
+    console.log('Game over?: ', this.board.isGameOver());
+    console.log('Game failed?: ', this.board.isGameFailed());
   }
 
   resetGame() {
@@ -64,6 +70,13 @@ export class AppComponent implements OnInit {
     return 0;
   }
 
+  getAvailableShots(): number {
+    if (this.board) {
+      return this.board.getAvailableShots();
+    }
+    return 0;
+  }
+
   private openResetDialog(): MatDialogRef<ResetGameBoardDialogComponent>  {
     const resetDialogRef = this.dialog.open(ResetGameBoardDialogComponent, {
       height: '160px',
@@ -84,8 +97,10 @@ export class AppComponent implements OnInit {
         new Submarine(new Coordinate(0, 1), Direction.Down),
         new PatrolBoat(new Coordinate(4, 7), Direction.Down)
       ];
+    // TODO: OPTIONS: Make this value editable in a settings dialog.
+    this.availableShots = 30;
     // TODO: OPTIONS: Add board width and height to the options panel.
-    this.board = this.gameBoardService.getNewGameBoard(10, 10, ships);
+    this.board = this.gameBoardService.getNewGameBoard(10, 10, ships, this.availableShots);
   }
 
 }

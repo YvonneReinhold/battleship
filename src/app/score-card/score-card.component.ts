@@ -11,14 +11,12 @@ export class ScoreCardComponent implements OnInit {
   @Output() resetGameEvent = new EventEmitter();
 
   @Input() missedShots: number;
+  @Input() availableShots: number;
 
   isGameRunning: boolean;
-  availableShots: number;
 
   ngOnInit() {
     this.isGameRunning = false;
-    // TODO: OPTIONS: Make this value editable in a settings dialog.
-    this.availableShots = 30;
     console.log('Missed shots: ', this.missedShots);
   }
 

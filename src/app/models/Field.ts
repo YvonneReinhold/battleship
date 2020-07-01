@@ -13,7 +13,6 @@ export class Field {
   id: string;
   coordinate: Coordinate;
   ship: Ship;
-  isHit: boolean;
   isShot: boolean;
   statusMessage: StatusMessage;
   statusImage: StatusImage;
@@ -23,7 +22,6 @@ export class Field {
     this.coordinate = new Coordinate(xCoord, yCoord);
     this.ship = null;
     this.isShot = false;
-    this.isHit = false;
     this.statusImage = null;
     this.statusMessage = null;
   }

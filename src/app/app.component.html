@@ -1,6 +1,6 @@
   <!--app-header></!--app-header-->
   <mat-grid-list cols="3" rowHeight="600px">
-    <mat-grid-tile><app-score-card (startNewGameEvent)="startNewGame()" (resetGameEvent)="resetGame()" [missedShots]="getMissedShots()"></app-score-card></mat-grid-tile>
+    <mat-grid-tile><app-score-card (startNewGameEvent)="startNewGame()" (resetGameEvent)="resetGame()" [missedShots]="getMissedShots()" [availableShots]="getAvailableShots()"></app-score-card></mat-grid-tile>
     <mat-grid-tile cols="2"><app-game-board [showGameBoard]="isGameBoardShown" [board]="board"></app-game-board></mat-grid-tile>
   </mat-grid-list>
 
